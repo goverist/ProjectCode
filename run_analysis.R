@@ -23,7 +23,7 @@ My_XY_Values <- rbind(XY_train_Values, XY_test_Values)
 XY_features <- read.table("UCI HAR Dataset/features.txt")
 XY_features <- as.character(XY_features[,2])
 XY_Names <- c("Subject", "Activity", XY_features)
-names(My_XY_Values) <- XY_Names
+
 ########################################################################################
 ## Step2. Extracts only the measurements on the mean and standard deviation for each measurement.
 ########################################################################################
@@ -41,5 +41,20 @@ MeanStdMeasures <- My_XY_Values[,IndexVector]
 ## Step 3. Use descriptive activity names to name acitivities in the data set
 ######################################################################################
 
+## By subsetting means we give to each activiy value its label
 
+MeanStdMeasures[MeanStdMeasures[,2] == 1,2] <- "Walking"
+MeanStdMeasures[MeanStdMeasures[,2] == 2,2] <- "Walking_Upstairs"
+MeanStdMeasures[MeanStdMeasures[,2] == 3,2] <- "Walking_Downstairs"
+MeanStdMeasures[MeanStdMeasures[,2] == 4,2] <- "Sitting"
+MeanStdMeasures[MeanStdMeasures[,2] == 5,2] <- "Standing"
+MeanStdMeasures[MeanStdMeasures[,2] == 6,2] <- "Laying"
+
+#######################################################################################
+## Step 4. Appropiately labels the data with descriptive variable names
+#######################################################################################
+
+
+MeanStdMeasuresLabels <- XY_Names[IndexVector]
+names(MeanStdMeasures) <- MeanStdMeasuresLabels
 
