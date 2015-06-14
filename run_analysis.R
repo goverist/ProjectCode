@@ -58,3 +58,9 @@ MeanStdMeasures[MeanStdMeasures[,2] == 6,2] <- "Laying"
 MeanStdMeasuresLabels <- XY_Names[IndexVector]
 names(MeanStdMeasures) <- MeanStdMeasuresLabels
 
+#####################################################################################
+## Step 5. From de Data Set in step 4, creates a second, independent tidy data set with
+## the average of each variable for each activity and each subject
+#####################################################################################
+
+TidyData <- ddply(MeanStdMeasures, .(Subject, Activity), function(x) colMeans(x[,3:68]))
