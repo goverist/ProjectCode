@@ -1,5 +1,6 @@
 ## Script for Course project of Getting and Cleaning Data
 ## As data is supossed to be in working directory not need to set working directory in the script
+library (plyr)
 library(dplyr)
 ## We first read de data for train and test values and store them
 train_Subjects <- read.table ("UCI HAR Dataset/train/subject_train.txt")
